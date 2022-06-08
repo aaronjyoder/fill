@@ -72,7 +72,6 @@ public class BasicQueueFiller implements Filler, MaskFiller {
         } else {
           image.setRGB(p.x, p.y, fill.getRGB());
         }
-        image.setRGB(p.x, p.y, fill.getRGB());
 
         queue.add(new Point(p.x - 1, p.y));
         queue.add(new Point(p.x + 1, p.y));

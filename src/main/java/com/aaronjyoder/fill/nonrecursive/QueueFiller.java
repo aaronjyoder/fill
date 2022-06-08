@@ -25,21 +25,42 @@ public class QueueFiller implements Filler {
     if (originalRGB == fill.getRGB()) {
       return;
     }
-    boolean[][] visited = new boolean[image.getHeight()][image.getWidth()];
-    Queue<Point> queue = new LinkedList<>();
-    queue.add(new Point(x, y));
 
-    while (!queue.isEmpty()) {
-      Point p = queue.remove();
-      if (FillUtil.isBounded(p.x, p.y, image.getWidth(), image.getHeight()) && image.getRGB(p.x, p.y) == originalRGB && !visited[p.y][p.x]) {
-        visited[p.y][p.x] = true;
-        image.setRGB(p.x, p.y, fill.getRGB());
-        queue.add(new Point(p.x - 1, p.y));
-        queue.add(new Point(p.x + 1, p.y));
-        queue.add(new Point(p.x, p.y - 1));
-        queue.add(new Point(p.x, p.y + 1));
+    Queue<Point> queue = new LinkedList<>();
+    if (image.getRGB(x, y) == originalRGB) {
+      queue.add(new Point(x, y));
+
+      while (!queue.isEmpty()) {
+        Point p = queue.remove();
+        if (image.getRGB(p.x, p.y) == originalRGB) {
+          int wx = p.x;
+          int ex = p.x + 1;
+
+          while (wx >= 0 && image.getRGB(wx, p.y) == originalRGB) {
+            wx--;
+          }
+
+          while (ex <= image.getWidth() - 1 && image.getRGB(ex, p.y) == originalRGB) {
+            ex++;
+          }
+
+          for (int ix = wx + 1; ix < ex; ix++) {
+            image.setRGB(ix, p.y, fill.getRGB());
+
+            if (p.y - 1 >= 0 && image.getRGB(ix, p.y - 1) == originalRGB) {
+              queue.add(new Point(ix, p.y - 1));
+            }
+
+            if (p.y + 1 < image.getHeight() && image.getRGB(ix, p.y + 1) == originalRGB) {
+              queue.add(new Point(ix, p.y + 1));
+            }
+          }
+
+        }
       }
+
     }
+
   }
 
 }

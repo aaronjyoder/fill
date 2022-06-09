@@ -1,4 +1,4 @@
-package com.aaronjyoder.fill;
+package io.github.aaronjyoder.fill;
 
 import java.awt.Color;
 import java.awt.Point;

@@ -1,7 +1,7 @@
-package com.aaronjyoder.fill.recursive;
+package io.github.aaronjyoder.fill.recursive;
 
-import com.aaronjyoder.fill.Filler;
-import com.aaronjyoder.fill.util.FillUtil;
+import io.github.aaronjyoder.fill.Filler;
+import io.github.aaronjyoder.fill.util.FillUtil;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 

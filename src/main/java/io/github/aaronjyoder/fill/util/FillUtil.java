@@ -1,4 +1,4 @@
-package com.aaronjyoder.fill.util;
+package io.github.aaronjyoder.fill.util;
 
 public class FillUtil {
 

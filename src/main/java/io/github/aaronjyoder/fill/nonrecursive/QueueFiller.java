@@ -1,7 +1,7 @@
-package com.aaronjyoder.fill.nonrecursive;
+package io.github.aaronjyoder.fill.nonrecursive;
 
-import com.aaronjyoder.fill.Filler;
-import com.aaronjyoder.fill.util.FillUtil;
+import io.github.aaronjyoder.fill.Filler;
+import io.github.aaronjyoder.fill.util.FillUtil;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;

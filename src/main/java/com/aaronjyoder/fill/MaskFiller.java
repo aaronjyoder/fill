@@ -6,10 +6,10 @@ import java.awt.image.BufferedImage;
 
 public interface MaskFiller {
 
-  void fill(int x, int y, Color fill, Color mask, BufferedImage maskImage);
+  void fill(int x, int y, Color fill, Color maskColor, BufferedImage maskImage);
 
-  default void fill(Point point, Color fill, Color mask, BufferedImage maskImage) {
-    fill(point.x, point.y, fill, mask, maskImage);
+  default void fill(Point point, Color fill, Color maskColor, BufferedImage maskImage) {
+    fill(point.x, point.y, fill, maskColor, maskImage);
   }
 
 }

@@ -45,7 +45,7 @@ public class BasicQueueFiller implements Filler, MaskFiller {
   }
 
   @Override
-  public void fill(int x, int y, Color fill, Color mask, BufferedImage maskImage) {
+  public void fill(int x, int y, Color fill, Color maskColor, BufferedImage maskImage) {
     if (!FillUtil.isBounded(x, y, image.getWidth(), image.getHeight())) {
       return;
     }
@@ -67,7 +67,8 @@ public class BasicQueueFiller implements Filler, MaskFiller {
       if (FillUtil.isBounded(p.x, p.y, image.getWidth(), image.getHeight()) && image.getRGB(p.x, p.y) == originalRGB && !visited[p.y][p.x]) {
         visited[p.y][p.x] = true;
 
-        if (clippedMaskImage.getRGB(p.x, p.y) == mask.getRGB()) {
+        // If we're on a mask pixel, use the masked color.
+        if (clippedMaskImage.getRGB(p.x, p.y) == maskColor.getRGB()) {
           image.setRGB(p.x, p.y, ColorUtil.adjustBrightnessDynamic(fill, 0.75F, 1.5F).getRGB());
         } else {
           image.setRGB(p.x, p.y, fill.getRGB());
